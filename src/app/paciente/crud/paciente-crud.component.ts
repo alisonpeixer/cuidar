@@ -1,12 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { PoComboOption, PoSelectComponent, PoSelectOption } from '@po-ui/ng-components';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { PoBreadcrumb, PoComboOption, PoSelectComponent, PoSelectOption } from '@po-ui/ng-components';
+import { getDefaultPaciente } from '../interface/paciente';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-paciente-crud',
   templateUrl: './paciente-crud.component.html',
-  styleUrls: ['./paciente-crud.component.css']
+  styleUrls: ['./paciente-crud.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PacienteCrudComponent implements OnInit {
+
+  dadosPaciente = getDefaultPaciente();
+
+  constructor() { }
+
+  @ViewChild('dadosPacienteForm',{static: false}) dadosPacienteForm!: NgForm;
 
   public readonly poSelectGenero: Array<PoComboOption> = [
     {label: 'Masculino', value: 'M'},
@@ -34,11 +43,24 @@ export class PacienteCrudComponent implements OnInit {
     { value: 'outro', label: 'Outro' }
   ];
 
-
-
-  constructor() { }
+  public readonly poPageBreadcrumb: PoBreadcrumb = {
+    items: [
+      { label: 'Home', link: '/' },
+      { label: 'Pacientes', link: '/pacientes'},
+      { label: 'Cadastrar Paciente' }
+    ]
+  };
 
   ngOnInit() {
   }
+
+
+
+  salvarCadastro(): void {
+    console.log(this.dadosPaciente)
+  }
+
+
+  
 
 }

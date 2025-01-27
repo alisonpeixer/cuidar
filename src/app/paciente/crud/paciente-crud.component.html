@@ -1,148 +1,131 @@
-<po-page-edit p-title="Cadastro de Paciente">
-
-  <form>
-
-    <po-widget class="po-md-12 po-row" p-title="Dados Paciente">
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input p-label="Código" class="po-md-12 po-lg-1" p-readonly="true"></po-input>
-        <po-input class="po-md-12 po-lg-8" p-label="Nome Completo"></po-input>
-        <po-datepicker class="po-md-12 po-lg-3" p-label="Data de Nascimento"></po-datepicker>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-combo class="po-md-12 po-lg-2" p-clean="true" p-label="Gênero" [p-options]="poSelectGenero"></po-combo>
-        <po-combo class="po-md-12 po-lg-2" p-clean="true" p-label="Estado Civil" [p-options]="poSelectEstadoCivil"></po-combo>
-        <po-input class="po-md-12 po-lg-8" p-label="Nacionalidade"></po-input>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-4" p-label="CPF"></po-input>
-        <po-input class="po-md-12 po-lg-4" p-label="RG"></po-input>
-        <po-input class="po-md-12 po-lg-4" p-label="Outro Documento"></po-input>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-divider class="po-md-12"></po-divider>
-        <po-input p-label="CEP" class="po-md-12 po-lg-1" p-mask="99999-999"></po-input>
-        <po-input p-label="Endereço" class="po-md-12 po-lg-9"></po-input>
-        <po-input p-label="Número" class="po-md-12 po-lg-2"></po-input>
-        <po-input p-label="Bairro" class="po-md-12 po-lg-4"></po-input>
-        <po-input p-label="Cidade" class="po-md-12 po-lg-4"></po-input>
-        <po-input p-label="Estado" class="po-md-12 po-lg-4"></po-input>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-divider class="po-md-12"></po-divider>
-        <po-input p-label="Fixo" class="po-md-12 po-lg-4"></po-input>
-        <po-input p-label="Celular" class="po-md-12 po-lg-4"></po-input>
-        <po-input p-label="E-mail" class="po-md-12 po-lg-4"></po-input>
-      </div>
-    </po-widget>
-
-
-    <!-- Informações Médicas -->
-    <po-widget class="po-row po-md-12 po-mt-2" p-title="Informações Médicas">
-      <div class="po-row po-md-12 po-mt-2">
-        <po-rich-text        class="po-md-12 po-lg-12" p-label="Condição de Saúde Atual"></po-rich-text>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Histórico de Doenças"></po-input>
-        <po-table class="po-md-12"></po-table>
-
-        <po-input class="po-md-12 po-lg-6" p-label="Alergias"></po-input>
-        <po-table class="po-md-12"></po-table>
-
-        <po-input class="po-md-12 po-lg-6" p-label="Medicamentos em Uso"></po-input>
-        <po-table class="po-md-12"></po-table>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Histórico de Cirurgias e Tratamentos"></po-input>
-        <po-table class="po-md-12"></po-table>
-
-        <po-datepicker class="po-md-12 po-lg-3" p-label="Última Vacinação"></po-datepicker>
-        <po-table class="po-md-12"></po-table>
-
-        <po-input class="po-md-12 po-lg-3" p-label="Exames Médicos Recentes"></po-input>
-        <po-table class="po-md-12"></po-table>
-      </div>
-
-      <po-divider class="po-md-12"></po-divider>
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Plano de Cuidados Médicos"></po-input>
-        <po-input class="po-md-12 po-lg-6" p-label="Necessidade de Assistência Especial"></po-input>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Nome e Contato do Médico Responsável"></po-input>
-        <po-combo class="po-md-12 po-lg-6" p-label="Convênio Médico" [p-options]="poSelectConvenio"></po-combo>
-      </div>
-    </po-widget>
-
-    <!-- Cuidados e Necessidades Especiais -->
-    <po-widget class="po-row po-md-12 po-mt-2" p-title="Cuidados e Necessidades Especiais">
-      <div class="po-row po-md-12 po-mt-2">
-        <po-textarea class="po-md-12 po-lg-12" p-label="Necessidades Nutricionais Especiais"></po-textarea>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-combo class="po-md-12 po-lg-6" p-label="Nível de Dependência para Atividades Diárias" [p-options]="poSelectDependencia"></po-combo>
-        <po-checkbox class="po-md-12 po-lg-6" p-label="Uso de Equipamentos Auxiliares"></po-checkbox>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-checkbox class="po-md-12 po-lg-6" p-label="Necessidade de Fisioterapia"></po-checkbox>
-        <po-checkbox class="po-md-12 po-lg-6" p-label="Necessidade de Terapia Ocupacional"></po-checkbox>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-textarea class="po-md-12 po-lg-12" p-label="Necessidades de Higiene e Cuidados Pessoais"></po-textarea>
-      </div>
-    </po-widget>
-
-    <!-- Histórico Familiar -->
-    <po-widget class="po-row po-md-12 po-mt-2" p-title="Histórico Familiar">
-      <div class="po-row po-md-12 po-mt-2">
-        <po-textarea class="po-md-12 po-lg-12" p-label="Histórico Familiar Relevante"></po-textarea>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Nome e Contato do Familiar 1"></po-input>
-        <po-input class="po-md-12 po-lg-6" p-label="Nome e Contato do Familiar 2"></po-input>
-      </div>
-    </po-widget>
-
-    <!-- Informações Psicológicas e Comportamentais -->
-    <po-widget class="po-row po-md-12 po-mt-2" p-title="Informações Psicológicas e Comportamentais">
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Diagnóstico Psicológico"></po-input>
-        <po-input class="po-md-12 po-lg-6" p-label="Comportamento e Estados Emocionais"></po-input>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-textarea class="po-md-12 po-lg-12" p-label="Preferências e Hábitos"></po-textarea>
-      </div>
-    </po-widget>
-
-    <!-- Informações Administrativas -->
-    <po-widget class="po-row po-md-12 po-mt-2" p-title="Informações Administrativas">
-      <div class="po-row po-md-12 po-mt-2">
-        <po-datepicker class="po-md-12 po-lg-6" p-label="Data de Admissão"></po-datepicker>
-        <po-datepicker class="po-md-12 po-lg-6" p-label="Data de Alta"></po-datepicker>
-      </div>
-
-      <div class="po-row po-md-12 po-mt-2">
-        <po-input class="po-md-12 po-lg-6" p-label="Informações sobre Pagamento"></po-input>
-        <po-input class="po-md-12 po-lg-6" p-label="Responsável pelo Pagamento"></po-input>
-      </div>
-    </po-widget>
-
+<po-page-edit p-title="Cadastro de Paciente" (p-save)="salvarCadastro()" [p-breadcrumb]="poPageBreadcrumb">
+  <form #dadosPacienteForm="ngForm" >
+    <po-tabs class="po-md-12">
+      <po-tab class="po-md-12" p-label="Dados Paciente" [p-active]="true">
+        <div class="po-md-12 po-row" >
+          <div class="po-row po-md-12 po-mt-2">
+            <po-input p-label="Código" class="po-md-12 po-lg-1" p-readonly="true" [(ngModel)]="dadosPaciente.id" name="id"></po-input>
+            <po-input class="po-md-12 po-lg-8" p-label="Nome Completo" [(ngModel)]="dadosPaciente.nomeCompleto" name="nomeCompleto"></po-input>
+            <po-datepicker class="po-md-12 po-lg-3" p-label="Data de Nascimento" [(ngModel)]="dadosPaciente.dataNascimento" name="dataNascimento"></po-datepicker>
+          </div>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-combo class="po-md-12 po-lg-2" p-clean="true" p-label="Gênero" [p-options]="poSelectGenero"  name="genero"></po-combo>
+            <po-combo class="po-md-12 po-lg-2" p-clean="true" p-label="Estado Civil" [p-options]="poSelectEstadoCivil"  name="estadoCivil"></po-combo>
+            <po-input class="po-md-12 po-lg-4" p-label="Nacionalidade" [(ngModel)]="dadosPaciente.nacionalidade" name="dataNascimento"></po-input>
+            <po-input class="po-md-12 po-lg-4" p-label="Documento de Identidade" [(ngModel)]="dadosPaciente.cgc" name="cgc"></po-input>
+          </div>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-divider class="po-md-12"></po-divider>
+            <po-input p-label="CEP" class="po-md-12 po-lg-2" p-mask="99999-999" p-label="Documento de Identidade" [(ngModel)]="dadosPaciente.cep" name="cep"></po-input>
+            <po-input p-label="Endereço" class="po-md-12 po-lg-8" [(ngModel)]="dadosPaciente.endereco" name="endereco"></po-input>
+            <po-input p-label="Número" class="po-md-12 po-lg-2" [(ngModel)]="dadosPaciente.numero" name="numero"></po-input>
+            <po-input p-label="Bairro" class="po-md-12 po-lg-4" [(ngModel)]="dadosPaciente.bairro" name="bairro"></po-input>
+            <po-input p-label="Cidade" class="po-md-12 po-lg-4" [(ngModel)]="dadosPaciente.cidade" name="cidade"></po-input>
+            <po-input p-label="Estado" class="po-md-12 po-lg-4" [(ngModel)]="dadosPaciente.estado" name="estado"></po-input>
+          </div>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-divider class="po-md-12" p-label="Dados Contato Responsável"></po-divider>
+            <po-input p-label="Fixo" class="po-md-12 po-lg-3" [(ngModel)]="dadosPaciente.fixo" name="fixo"></po-input>
+            <po-input p-label="Celular" class="po-md-12 po-lg-3" [(ngModel)]="dadosPaciente.celular" name="celular"></po-input>
+            <po-input p-label="WhatsApp" class="po-md-12 po-lg-3" [(ngModel)]="dadosPaciente.whatsapp" name="whatsapp"></po-input>
+            <po-input p-label="E-mail" class="po-md-12 po-lg-3" [(ngModel)]="dadosPaciente.email" name="email"></po-input>
+          </div>
+        </div>    
+      </po-tab>
+      <po-tab p-label="Informações Médicas">
+       <div class="po-row po-md-12">
+          <div class="po-row po-md-12 po-mt-2">
+            <po-input class="po-md-12 po-lg-4" p-label="Plano de Cuidados Médicos" [(ngModel)]="dadosPaciente.planoCuidadosMedicos" name="planoCuidadosMedicos"></po-input>
+            <po-input class="po-md-12 po-lg-4" p-label="Tratamentos Específicos (ex: quimioterapia)" [(ngModel)]="dadosPaciente.tratamentosEspecificos" name="tratamentosEspecificos"></po-input>
+            <po-input class="po-md-12 po-lg-4" p-label="Acompanhamento Médico Contínuo" [(ngModel)]="dadosPaciente.acompanhamentoMedico" name="acompanhamentoMedico"></po-input>
+          </div>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-input class="po-md-12 po-lg-6" p-label="Nome e Contato do Médico Responsável" [(ngModel)]="dadosPaciente.medicoResponsavel" name="medicoResponsavel"></po-input>
+            <po-combo class="po-md-12 po-lg-6" p-label="Convênio Médico" [p-options]="poSelectConvenio" ></po-combo>
+          </div>
+          <po-widget class="po-row po-md-12 po-mt-2"  p-title="Condição de Saúde Atual">
+            <po-rich-text class="po-md-12" [p-height]="140" [(ngModel)]="dadosPaciente.condicaoSaudeAtual" name="condicaoSaudeAtual"></po-rich-text>
+          </po-widget>
+          <po-widget class="po-row po-md-12 po-mt-2">
+            <po-tabs class="po-md-12">
+              <po-tab p-label="Histórico de Doenças" [p-active]="true">
+                <po-info class="po-md-12 po-lg-12" p-label="Histórico de Doenças"></po-info>
+                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.historicoDoencas" name="historicoDoencas"></po-rich-text>
+              </po-tab>
+              <po-tab p-label="Alergias">
+                <po-info class="po-md-12 po-lg-12" p-label="Alergias"></po-info>
+                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.alergias" name="alergias"></po-rich-text>
+              </po-tab>
+              <po-tab p-label="Medicamentos em Uso">
+                <po-info class="po-md-12 po-lg-12" p-label="Medicamentos em Uso"></po-info>
+                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.medicamentosEmUso" name="medicamentosEmUso"></po-rich-text>
+              </po-tab>
+              <po-tab p-label="Histórico de Cirurgias e Tratamentos">
+                <po-info class="po-md-12" p-label="Histórico de Cirurgias e Tratamentos"></po-info>
+                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.historicoCirurgias" name="historicoCirurgias"></po-rich-text>
+              </po-tab>
+              <po-tab p-label="Última Vacinação">
+                <po-info class="po-md-12" p-label="Última Vacinação" ></po-info>
+                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.ultimaVacina" name="ultimaVacina"></po-rich-text>
+              </po-tab>
+              <po-tab p-label="Exames Médicos Recentes">
+                <po-info class="po-md-12" p-label="Exames Médicos Recentes"></po-info>
+                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.examesRecentes" name="examesRecentes"></po-rich-text>
+              </po-tab>
+            </po-tabs>
+          </po-widget>
+       </div>
+      </po-tab>
+      <po-tab p-label="Cuidados Especiais">
+        <div class="po-row po-md-12">
+          <div class="po-row po-md-12 po-mt-2">
+            <po-rich-text class="po-md-12 po-lg-12" p-label="Necessidades Nutricionais Especiais" [(ngModel)]="dadosPaciente.necessidadesNutricionais" name="necessidadesNutricionais"></po-rich-text>
+            <po-combo class="po-md-12 po-lg-12" p-label="Nível de Dependência para Atividades Diárias" [p-options]="poSelectDependencia"></po-combo>
+          </div>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Necessidade de Fisioterapia" [(ngModel)]="dadosPaciente.fisioterapia" name="fisioterapia"></po-checkbox>
+            <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Uso de Equipamentos Auxiliares" [(ngModel)]="dadosPaciente.equipamentosAuxiliares" name="equipamentosAuxiliares"></po-checkbox>
+            <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Necessidade de Terapia Ocupacional" [(ngModel)]="dadosPaciente.terapiaOcupacional" name="terapiaOcupacional"></po-checkbox>
+            <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Necessidade de Ajuda para Locomoção" [(ngModel)]="dadosPaciente.ajudaLocomocao" name="ajudaLocomocao"></po-checkbox>
+            <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Uso de Fraldas ou Cuidadores Especiais" [(ngModel)]="dadosPaciente.fraldasCuidadores" name="fraldasCuidadores"></po-checkbox>
+          </div>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-textarea class="po-md-12 po-lg-12 po-mt-2" p-label="Necessidades de Higiene e Cuidados Pessoais" [(ngModel)]="dadosPaciente.cuidadosPessoais" name="cuidadosPessoais"></po-textarea>
+          </div>
+        </div>
+      </po-tab>
+      <po-tab p-label="Histórico Familiar">
+        <po-widget class="po-md-12" >
+          <po-rich-text class="po-md-12 po-lg-12" [p-height]="300" [(ngModel)]="dadosPaciente.historicoFamiliar" name="historicoFamiliar"></po-rich-text>
+        </po-widget>
+      </po-tab>
+      <po-tab p-label="Psicológicas e Comportamentais">
+        <div class="po-row po-md-12 po-mt-2" >
+          <div class="po-md-12 po-row">
+            <po-checkbox class="po-md-12 po-lg-6" p-label="Comportamento Agressivo (se aplicável)" [(ngModel)]="dadosPaciente.comportamentoAgressivo" name="comportamentoAgressivo"></po-checkbox>
+            <po-checkbox class="po-md-12 po-lg-6" p-label="Tratamento Psicológico Contínuo" [(ngModel)]="dadosPaciente.tratamentoPsicologico" name="tratamentoPsicologico"></po-checkbox>
+          </div>
+          <po-divider class="po-md-12 po-mt-2"></po-divider>
+          <div class="po-row po-md-12 po-mt-2">
+            <po-input class="po-md-12 po-lg-6" p-label="Diagnóstico Psicológico" [(ngModel)]="dadosPaciente.diagnosticoPsicologico" name="diagnosticoPsicologico"></po-input>
+            <po-input class="po-md-12 po-lg-6" p-label="Comportamento e Estados Emocionais" [(ngModel)]="dadosPaciente.comportamentoEmocional" name="comportamentoEmocional"></po-input>
+            <po-textarea class="po-md-12 po-lg-12" p-label="Preferências e Hábitos" [(ngModel)]="dadosPaciente.preferenciasHabitos" name="preferenciasHabitos"></po-textarea>
+          </div>
+        </div>
+      </po-tab>
+      <po-tab p-label="Informações Administrativas">
+        <div class="po-row po-md-12 po-mt-2">
+          <po-datepicker class="po-md-12 po-lg-6" p-label="Data de Admissão" [(ngModel)]="dadosPaciente.dataAdmissao" name="dataAdmissao"></po-datepicker>
+          <po-datepicker class="po-md-12 po-lg-6" p-label="Data de Alta" [(ngModel)]="dadosPaciente.dataAlta" name="dataAlta"></po-datepicker>
+          <po-divider class="po-md-12"></po-divider>
+          <po-decimal class="po-md-12 po-lg-6" p-label="Informações sobre Pagamento" [p-decimals-length]="2" [(ngModel)]="dadosPaciente.pagamento" name="pagamento"></po-decimal>
+          <po-datepicker class="po-md-12 po-lg-6" p-label="Data de Pagamento da Mensalidade" [(ngModel)]="dadosPaciente.dataPagamento" name="dataPagamento"></po-datepicker>
+          <po-divider class="po-md-12"></po-divider>
+          <po-input class="po-md-12 po-lg-6" p-label="Nome do Responsável pelo Pagamento" [(ngModel)]="dadosPaciente.responsavelPagamento" name="responsavelPagamento"></po-input>
+          <po-input class="po-md-12 po-lg-6" p-label="Documento" [(ngModel)]="dadosPaciente.documentoResponsavel" name="documentoResponsavel"></po-input>
+        </div>
+      </po-tab>
+    </po-tabs>
   </form>
-
 </po-page-edit>
 
-
-<po-modal p-title="Dença">
-
-</po-modal>

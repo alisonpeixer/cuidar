@@ -17,3 +17,7 @@
   align-items: center !important;
     padding-left: 10px !important;
 }
+
+.po-info-value {
+  min-height: 0 !important;
+}

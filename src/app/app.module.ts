@@ -12,6 +12,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { PacienteCrudComponent } from './paciente/crud/paciente-crud.component';
 import { PacienteListaComponent } from './paciente/lista/paciente-lista.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PacienteListaComponent } from './paciente/lista/paciente-lista.componen
     BrowserModule,
     AppRoutingModule,
     PoModule,
-    PoTemplatesModule
+    PoTemplatesModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

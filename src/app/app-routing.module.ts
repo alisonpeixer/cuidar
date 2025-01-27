@@ -9,7 +9,7 @@ import { PacienteListaComponent } from './paciente/lista/paciente-lista.componen
 const routes: Routes = [
   { path: '', component: MainComponent, children: [
       {path: 'pacientes', component: PacienteListaComponent},
-      {path: 'paciente/CID', component: PacienteCrudComponent},
+      {path: 'paciente/editar-cadastro/:CID', component: PacienteCrudComponent},
       {path: 'paciente/cadastro', component: PacienteCrudComponent},
   ] },
   { path: 'signin', component: SigninComponent},

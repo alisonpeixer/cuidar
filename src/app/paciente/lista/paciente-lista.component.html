@@ -2,7 +2,16 @@
   [p-actions]="pageActions"
   p-title="Lista de Pacientes"
 >
+<div>
+  <po-table class="po-md-12"
+    p-container
+    [p-height]="500"
+    [p-hide-table-search]="false"
 
+    [p-items]="dadosTabelaPrincipal"
+    [p-columns]="tabelaPrincipalColumns"
+    [p-actions]="tabelaPrincipalActions"
+  ></po-table>
 
-
+</div>
 </po-page-list>
