@@ -1,7 +1,12 @@
 asgiref==3.8.1
 Django==5.1.5
+django-filter==24.3
+djangorestframework==3.15.2
 gitdb==4.0.11
 GitPython==3.1.41
+Markdown==3.7
 setuptools==69.0.3
 smmap==5.0.1
 sqlparse==0.5.3
+## The following requirements were added by pip freeze:
+django-cors-headers==4.7.0

@@ -3,9 +3,6 @@ from django.db                  import models
 from django.utils               import timezone
 
 
-
-
-
 class Paciente(models.Model):
     id      = models.AutoField(primary_key=True)
     codigo  = models.CharField(default='',blank=True,null=True,max_length=6)
