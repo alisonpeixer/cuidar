@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoPageAction, PoTableAction, PoTableColumn } from '@po-ui/ng-components';
-import { PacienteLista } from '../interface/paciente';
+import { Paciente, PacienteLista } from '../interface/paciente';
+import { PacienteService } from '../service/paciente.service';
 
 @Component({
   selector: 'app-paciente-lista',
@@ -10,7 +11,7 @@ import { PacienteLista } from '../interface/paciente';
 })
 export class PacienteListaComponent implements OnInit {
 
-  dadosTabelaPrincipal: Array<PacienteLista> = [];
+  dadosTabelaPrincipal: Array<Paciente> = [];
 
   public readonly tabelaPrincipalColumns: Array<PoTableColumn> = [
 
@@ -19,7 +20,7 @@ export class PacienteListaComponent implements OnInit {
     { property: 'genero', label: 'Gênero' },
     { property: 'dataNascimento', label: 'Data de Nascimento', type: 'dateTime', format: 'dd/MM/yyyy' },
     { property: 'dataAdmissao', label: 'Data de Admissão', type: 'dateTime',format: 'dd/MM/yyyy' },
-  ];  
+  ];
 
   public readonly tabelaPrincipalActions: Array<PoTableAction> = [
     { icon: 'po-icon-edit', label: '', action:  this.goToEdicao.bind(this) },
@@ -27,6 +28,7 @@ export class PacienteListaComponent implements OnInit {
 
   constructor(
     private route: Router,
+    private pacienteService: PacienteService
   ) { }
 
   public readonly pageActions: Array<PoPageAction> = [
@@ -39,10 +41,10 @@ export class PacienteListaComponent implements OnInit {
 
 
   getDados(): void {
-    this.dadosTabelaPrincipal = [
-      { codigo: 'P001', nomeCompleto: 'Nome do Paciente 1', genero: 'M', dataNascimento: new Date('1990-01-01'), dataAdmissao: new Date('2020-01-01') },
-      { codigo: 'P002', nomeCompleto: 'Nome do Paciente 2', genero: 'F', dataNascimento: new Date('1995-05-10'), dataAdmissao: new Date('2021-02-15') },
-    ];
+    this.pacienteService.listar().subscribe((res)=>{
+      this.dadosTabelaPrincipal = res.items;
+
+    });
   }
 
   goToEdicao(item: PacienteLista): void {

@@ -1,7 +1,7 @@
 export interface Paciente {
     id: number | undefined;
     nomeCompleto: string;
-    dataNascimento: Date | undefined; 
+    dataNascimento: Date | undefined;
     genero: string;
     estadoCivil: string;
     nacionalidade: string;
@@ -49,7 +49,7 @@ export interface Paciente {
     responsavelPagamento: string;
     documentoResponsavel: string;
 }
-  
+
 export const getDefaultPaciente = ():Paciente => ({
     id: undefined,
     nomeCompleto: '',
@@ -99,7 +99,7 @@ export const getDefaultPaciente = ():Paciente => ({
     pagamento: 0,
     dataPagamento: '',
     responsavelPagamento: '',
-    documentoResponsavel: '' 
+    documentoResponsavel: ''
 });
 
 
@@ -119,3 +119,11 @@ export const getDefaultPacienteLista = (): PacienteLista => ({
     dataNascimento: new Date(),
     dataAdmissao: new Date()
 });
+
+
+
+
+export interface PacienteDto {
+  items: Array<Paciente>;
+  hasNext: boolean;
+}
