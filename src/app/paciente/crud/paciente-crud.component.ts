@@ -7,10 +7,11 @@ import { getDefaultPaciente } from '../interface/paciente';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-paciente-crud',
-  templateUrl: './paciente-crud.component.html',
-  styleUrls: ['./paciente-crud.component.css'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-paciente-crud',
+    templateUrl: './paciente-crud.component.html',
+    styleUrls: ['./paciente-crud.component.css'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class PacienteCrudComponent implements OnInit {
 
