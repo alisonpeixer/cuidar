@@ -1,5 +1,5 @@
-from rest_framework import viewsets
 from rest_framework import filters
+from rest_framework.generics import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 
 from . import models
@@ -13,3 +13,31 @@ class PacienteViewSet(PouiViewset):
     filter_backends     = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields    = ['nome_completo', 'email']
     search_fields       = ['nome_completo', 'email']
+    ordering            = ['codigo']
+
+    http_method_names   = ['get', 'post', 'put']
+    
+    view_name           = 'paciente'
+
+    def get_object(self):
+      lookup_value = self.kwargs.get('pk')
+      
+      if lookup_value.isdigit():
+          return get_object_or_404(models.Paciente, id=int(lookup_value))
+      else:
+          return get_object_or_404(models.Paciente, codigo=lookup_value)
+          
+class PacienteListViewSet(PouiViewset):
+    queryset            = models.Paciente.objects.all()
+    serializer_class    = serializers.PacienteListSerialize
+
+    filter_backends     = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields    = ['nome_completo', 'email']
+    search_fields       = ['nome_completo', 'email']
+    ordering            = ['email']
+
+    http_method_names   = ['get']
+    
+    view_name           = 'pacientes'
+
+          

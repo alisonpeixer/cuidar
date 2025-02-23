@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #LIBS
     "rest_framework",
     "corsheaders",
+    "django_filters",
 
     #APPS
     "apps.cuidar"
@@ -113,13 +114,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "pt-BR"
+LANGUAGE_CODE = "pt-br"  # Minúsculo para evitar problemas
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Sao_Paulo"  # Para o horário de Brasília
 
-USE_I18N = True
+USE_I18N = True  # Ativar suporte a internacionalização
+USE_L10N = True  # Ativar formatação local
+USE_TZ = True  # Usar fuso horário ativado
 
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -135,11 +137,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #DRF
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
     'DEFAULT_FILTER_BACKENDS': 'django_filters.rest_framework.DjangoFilterBackend',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,

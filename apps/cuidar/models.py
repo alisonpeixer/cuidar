@@ -4,13 +4,31 @@ from django.utils               import timezone
 
 
 class Paciente(models.Model):
+
+    CHOISE_SIM_NAO = (
+        ('S','Sim'),
+        ('N','Não')
+    )
+
+    CHOISE_GENERO = (
+        ('M','Masculino'),
+        ('F','Feminino')
+    )
+
+    CHOISE_ESTADO_CIVIL = (
+        ('S',  'Solteiro(a)'),
+        ('C','Casado(a)'),
+        ('D','Divorciado(a)'),
+        ('V', 'Viúvo(a)')
+    )
+
     id      = models.AutoField(primary_key=True)
     codigo  = models.CharField(default='',blank=True,null=True,max_length=6)
-
+    cadastro_ativo = models.CharField(default='S',blank=False,null=False,max_length=1,choices=CHOISE_SIM_NAO)
     nome_completo = models.CharField(max_length=255)
     data_nascimento = models.DateField()
-    genero = models.CharField(max_length=50)
-    estado_civil = models.CharField(max_length=50)
+    genero = models.CharField(max_length=50,choices=CHOISE_GENERO)
+    estado_civil = models.CharField(max_length=50,choices=CHOISE_ESTADO_CIVIL)
     nacionalidade = models.CharField(max_length=100)
     cgc = models.CharField(max_length=50, unique=True)
     cep = models.CharField(max_length=20)
@@ -53,10 +71,10 @@ class Paciente(models.Model):
     data_alta = models.DateField(blank=True, null=True)
     pagamento = models.DecimalField(max_digits=10, decimal_places=2)
     data_pagamento = models.DateField()
-    responsavel_pagamento = models.CharField(max_length=255)
+    responsavel_pagamento = models.CharField(max_length=255,blank=True, null=True)
 
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateField(blank=True,null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True,blank=True,null=True)
 
     class Meta:
         verbose_name_plural = "Pacientes"
@@ -67,9 +85,10 @@ class Paciente(models.Model):
     def save(self, *args,**kwargs):
         self.updated_at = timezone.now()
         
-        last_paciente = Paciente.objects.order_by('-id').first()
-        next_number = int(last_paciente.codigo.split('P')[1]) + 1 if last_paciente else 1
-        self.codigo = f"P{next_number:06}"
+        if not self.codigo:
+            last_paciente = Paciente.objects.order_by('-id').first()
+            next_number = int(last_paciente.codigo.split('P')[1]) + 1 if last_paciente else 1
+            self.codigo = f"P{next_number:06}"
         
         super(Paciente, self).save(*args,**kwargs)
 
