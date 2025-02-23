@@ -5,9 +5,10 @@ import { Paciente, PacienteLista } from '../interface/paciente';
 import { PacienteService } from '../service/paciente.service';
 
 @Component({
-  selector: 'app-paciente-lista',
-  templateUrl: './paciente-lista.component.html',
-  styleUrls: ['./paciente-lista.component.css']
+    selector: 'app-paciente-lista',
+    templateUrl: './paciente-lista.component.html',
+    styleUrls: ['./paciente-lista.component.css'],
+    standalone: false
 })
 export class PacienteListaComponent implements OnInit {
 
