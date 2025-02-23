@@ -16,22 +16,22 @@ export class PacienteService {
   ) { }
 
   listar(): Observable<PacienteDto> {
-    return this.http.get<PacienteDto>(this.urlApi+'/pacientes/');
+    return this.http.get<PacienteDto>(this.urlApi+'/pacientes/', {headers: { 'X-PO-Screen-Lock': 'true' }});
   }
 
-  criar(paciente: Paciente): Observable<Paciente> {
-    return this.http.post<Paciente>(this.urlApi+'/pacientes/', paciente);
+  cadastrar(paciente: Paciente): Observable<Paciente> {
+    return this.http.post<Paciente>(this.urlApi+'/paciente/', paciente, {headers: { 'X-PO-Screen-Lock': 'true' }});
   }
 
   atualizar(paciente: Paciente): Observable<Paciente> {
-    return this.http.put<Paciente>(this.urlApi+'/pacientes/' + paciente.id + '/', paciente);
+    return this.http.put<Paciente>(this.urlApi+'/paciente/' + paciente.codigo + '/', paciente, {headers: { 'X-PO-Screen-Lock': 'true' }});
   }
 
   deletar(paciente: Paciente): Observable<any> {
-    return this.http.delete<any>(this.urlApi+'/pacientes/' + paciente.id + '/');
+    return this.http.delete<any>(this.urlApi+'/pacientes/' + paciente.codigo + '/', {headers: { 'X-PO-Screen-Lock': 'true' }});
   }
 
-  buscar(id: number): Observable<Paciente> {
-    return this.http.get<Paciente>(this.urlApi+'/pacientes/' + id + '/');
+  buscar(id: string): Observable<Paciente> {
+    return this.http.get<Paciente>(this.urlApi+'/paciente/' + id + '/', {headers: { 'X-PO-Screen-Lock': 'true' }});
   }
 }

@@ -1,3 +1,6 @@
+import { ActivatedRoute, Router } from '@angular/router';
+import { PacienteService } from './../service/paciente.service';
+import { Paciente } from './../interface/paciente';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { PoBreadcrumb, PoComboOption, PoSelectComponent, PoSelectOption } from '@po-ui/ng-components';
 import { getDefaultPaciente } from '../interface/paciente';
@@ -13,7 +16,10 @@ export class PacienteCrudComponent implements OnInit {
 
   dadosPaciente = getDefaultPaciente();
 
-  constructor() { }
+  constructor(
+    private pacienteService: PacienteService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   @ViewChild('dadosPacienteForm',{static: false}) dadosPacienteForm!: NgForm;
 
@@ -31,9 +37,9 @@ export class PacienteCrudComponent implements OnInit {
   ];
 
   public readonly poSelectDependencia: Array<PoComboOption> = [
-    { value: 'independente', label: 'Independente' },
-    { value: 'parcialmente_dependente', label: 'Parcialmente Dependente' },
-    { value: 'totalmente_dependente', label: 'Totalmente Dependente' }
+    { value: 'I', label: 'Independente' },
+    { value: 'P', label: 'Parcialmente Dependente' },
+    { value: 'T', label: 'Totalmente Dependente' }
   ];
 
   public readonly poSelectConvenio: Array<PoComboOption> = [
@@ -42,6 +48,11 @@ export class PacienteCrudComponent implements OnInit {
     { value: 'sulamerica', label: 'SulAmérica' },
     { value: 'outro', label: 'Outro' }
   ];
+
+  public readonly poSelectSimNao: Array<PoSelectOption> = [
+    { value: 'S', label: 'Sim' },
+    { value: 'N', label: 'Não' }
+  ]
 
   public readonly poPageBreadcrumb: PoBreadcrumb = {
     items: [
@@ -52,15 +63,41 @@ export class PacienteCrudComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(param=> {
+
+      if('CID' in param ) {
+         this.pacienteService.buscar(param['CID']).subscribe(
+          (res)=> {
+            this.dadosPaciente = res;
+            this.dadosPacienteForm.form.patchValue(this.dadosPaciente);
+            console.log(this.dadosPaciente);
+          }
+         )
+      } else {
+        this.dadosPaciente = getDefaultPaciente();
+      }
+    })
+
+
   }
 
 
 
   salvarCadastro(): void {
-    console.log(this.dadosPaciente)
+
+    if(this.dadosPacienteForm.valid) {
+      this.dadosPaciente = this.dadosPacienteForm.value;
+      console.log(this.dadosPaciente);
+      if('CID' in this.activatedRoute.snapshot.params) {
+        this.pacienteService.atualizar(this.dadosPaciente).subscribe();
+      } else {
+        this.pacienteService.cadastrar(this.dadosPaciente).subscribe();
+      }
+    } else {
+
+    }
+
+
   }
-
-
-  
 
 }

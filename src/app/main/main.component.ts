@@ -11,7 +11,12 @@ export class MainComponent implements OnInit {
 
   readonly menus: Array<PoMenuItem> = [
     { label: 'Home' },
-    { label: 'Pacientes', link: '/pacientes' },
+    { label: 'Pacientes',
+      icon: 'an-user',
+      subItems: [
+        { label: 'Cadastrar', link: '/paciente/cadastro' },
+        { label: 'Listar', link: '/pacientes' },
+    ] },
   ];
 
   constructor() { }

@@ -15,11 +15,18 @@ export class PacienteListaComponent implements OnInit {
 
   public readonly tabelaPrincipalColumns: Array<PoTableColumn> = [
 
+    { property: 'cadastro_ativo', label: 'Ativo?', type: 'label', labels:[
+      {value: 'S', label: 'Sim', color: '#00c90d'},
+      {value: 'N', label: 'Não', color: '#f54242'}
+    ]},
     { property: 'codigo', label: 'Código' },
-    { property: 'nomeCompleto', label: 'Nome Completo' },
-    { property: 'genero', label: 'Gênero' },
-    { property: 'dataNascimento', label: 'Data de Nascimento', type: 'dateTime', format: 'dd/MM/yyyy' },
-    { property: 'dataAdmissao', label: 'Data de Admissão', type: 'dateTime',format: 'dd/MM/yyyy' },
+    { property: 'nome_completo', label: 'Nome Completo' },
+    { property: 'genero', label: 'Gênero', type: 'label', labels: [
+      { value: 'M', label: 'Masculino', color: '#006fc9' },
+      { value: 'F', label: 'Feminino',  color: '#c90075' },
+    ] },
+    { property: 'data_nascimento', label: 'Data de Nascimento', type: 'dateTime', format: 'dd/MM/yyyy' },
+    { property: 'data_admissao', label: 'Data de Admissão', type: 'dateTime',format: 'dd/MM/yyyy' },
   ];
 
   public readonly tabelaPrincipalActions: Array<PoTableAction> = [
