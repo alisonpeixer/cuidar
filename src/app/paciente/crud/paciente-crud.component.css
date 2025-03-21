@@ -1,3 +1,8 @@
+:root {
+  --rich-text-body-max-height: 1000px;
+}
+
+
 .po-tab-button {
-    max-width: 17rem !important;
+  max-width: 17rem !important;
 }

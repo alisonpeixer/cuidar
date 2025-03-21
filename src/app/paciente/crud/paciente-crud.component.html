@@ -63,47 +63,47 @@
           <div class="po-row po-md-12 po-mt-2">
             <po-input class="po-md-12 po-lg-6" p-label="Nome e Contato do Médico Responsável"
               [(ngModel)]="dadosPaciente.medico_responsavel" name="medico_responsavel"></po-input>
-            <po-combo class="po-md-12 po-lg-6" p-label="Convênio Médico" [p-options]="poSelectConvenio" [ngModel]="dadosPaciente.convenio_medico" name="convenio_medico"></po-combo>
+            <po-combo class="po-md-12 po-lg-6" p-label="Convênio Médico" [p-options]="poSelectConvenio" p-clean="true" [ngModel]="dadosPaciente.convenio_medico" name="convenio_medico"></po-combo>
           </div>
           <po-widget class="po-row po-md-12 po-mt-2" p-title="Condição de Saúde Atual">
-            <po-rich-text class="po-md-12" [p-height]="140" [(ngModel)]="dadosPaciente.condicao_saude_atual"
+            <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.condicao_saude_atual"
               name="condicao_saude_atual"></po-rich-text>
           </po-widget>
           <po-widget class="po-row po-md-12 po-mt-2">
             <po-tabs class="po-md-12">
               <po-tab p-label="Histórico de Doenças" [p-active]="true">
                 <po-info class="po-md-12 po-lg-12" p-label="Histórico de Doenças"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.historico_doencas"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.historico_doencas"
                   name="historico_doencas"></po-rich-text>
               </po-tab>
               <po-tab p-label="Alergias">
                 <po-info class="po-md-12 po-lg-12" p-label="Alergias"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.alergias"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.alergias"
                   name="alergias"></po-rich-text>
               </po-tab>
               <po-tab p-label="Medicamentos em Uso">
                 <po-info class="po-md-12 po-lg-12" p-label="Medicamentos em Uso"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.medicamentos_em_uso"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.medicamentos_em_uso"
                   name="medicamentos_em_uso"></po-rich-text>
               </po-tab>
               <po-tab p-label="Histórico de Cirurgias e Tratamentos">
                 <po-info class="po-md-12" p-label="Histórico de Cirurgias e Tratamentos"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.historico_cirurgias"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.historico_cirurgias"
                   name="historico_cirurgias"></po-rich-text>
               </po-tab>
               <po-tab p-label="Última Vacinação">
                 <po-info class="po-md-12" p-label="Última Vacinação"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.ultima_vacina"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.ultima_vacina"
                   name="ultima_vacina"></po-rich-text>
               </po-tab>
               <po-tab p-label="Exames Médicos Recentes">
                 <po-info class="po-md-12" p-label="Exames Médicos Recentes"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.exames_recentes"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.exames_recentes"
                   name="exames_recentes"></po-rich-text>
               </po-tab>
               <po-tab p-label="Histórico de Internações">
                 <po-info class="po-md-12" p-label="Histórico de Internações"></po-info>
-                <po-rich-text class="po-md-12" [p-height]="300" [(ngModel)]="dadosPaciente.historico_internacao"
+                <po-rich-text class="po-md-12" [p-height]="500" [(ngModel)]="dadosPaciente.historico_internacao"
                   name="historico_internacao"></po-rich-text>
               </po-tab>
             </po-tabs>
@@ -113,14 +113,14 @@
       <po-tab p-label="Cuidados Especiais">
         <div class="po-row po-md-12">
           <div class="po-row po-md-12 po-mt-2">
-            <po-rich-text class="po-md-12 po-lg-12" p-label="Necessidades Nutricionais Especiais"
+            <po-rich-text class="po-md-12 po-lg-12" p-label="Necessidades Nutricionais Especiais" [p-height]="500"
               [(ngModel)]="dadosPaciente.necessidades_nutricionais" name="necessidades_nutricionais"></po-rich-text>
 
           </div>
           <po-divider class="po-md-12"></po-divider>
           <div class="po-row po-md-12 po-mt-2">
             <po-combo class="po-md-12 po-lg-12" p-label="Nível de Dependência para Atividades Diárias"
-            [p-options]="poSelectDependencia" [ngModel]="dadosPaciente.nivel_dependencia"
+            [p-options]="poSelectDependencia" [ngModel]="dadosPaciente.nivel_dependencia" p-clean="true"
             name="nivel_dependencia"></po-combo>
             <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Necessidade de Fisioterapia"
             [(ngModel)]="dadosPaciente.fisioterapia" name="fisioterapia"></po-checkbox>
@@ -145,15 +145,18 @@
           </div>
           <po-divider class="po-md-12"></po-divider>
           <div class="po-row po-md-12 po-mt-2 po-mb-2">
-            <po-textarea class="po-md-12 po-lg-12 po-mt-2" p-label="Necessidades de Higiene e Cuidados Pessoais"
-              [(ngModel)]="dadosPaciente.cuidados_pessoais" name="cuidados_pessoais"></po-textarea>
+            <po-rich-text class="po-md-12 po-lg-12 po-mt-2"
+              p-label="Necessidades de Higiene e Cuidados Pessoais"
+              [(ngModel)]="dadosPaciente.cuidados_pessoais" name="cuidados_pessoais"
+              [p-height]="500"
+            ></po-rich-text>
           </div>
         </div>
       </po-tab>
       <po-tab p-label="Histórico Familiar">
         <po-rich-text
             class="po-md-12"
-
+            [p-height]="800"
             [(ngModel)]="dadosPaciente.historico_familiar"
             name="historico_familiar" ></po-rich-text>
       </po-tab>
@@ -171,7 +174,7 @@
               [(ngModel)]="dadosPaciente.diagnostico_psicologico" name="diagnostico_psicologico"></po-input>
             <po-input class="po-md-12 po-lg-6" p-label="Comportamento e Estados Emocionais"
               [(ngModel)]="dadosPaciente.comportamento_emocional" name="comportamento_emocional"></po-input>
-            <po-rich-text class="po-md-12 po-lg-12" p-label="Preferências e Hábitos"
+            <po-rich-text class="po-md-12 po-lg-12" p-label="Preferências e Hábitos" [p-height]="500"
               [(ngModel)]="dadosPaciente.preferencias_habitos" name="preferencias_habitos"></po-rich-text>
           </div>
         </div>
@@ -179,7 +182,7 @@
       <po-tab p-label="Informações Administrativas">
         <div class="po-row po-md-12 po-mt-2">
           <po-select p-label="Cadastro Ativo?" name="cadastro_ativo" class="po-md-12 po-lg-12"
-            [ngModel]="dadosPaciente.cadastro_ativo" [p-options]="poSelectSimNao"></po-select>
+            [ngModel]="dadosPaciente.cadastro_ativo" p-clean="true" [p-options]="poSelectSimNao"></po-select>
           <po-divider class="po-md-12"></po-divider>
           <po-datepicker class="po-md-12 po-lg-6" p-label="Data de Admissão" [(ngModel)]="dadosPaciente.data_admissao"
             name="data_admissao"></po-datepicker>
