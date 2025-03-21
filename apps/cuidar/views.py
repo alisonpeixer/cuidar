@@ -14,19 +14,12 @@ class PacienteViewSet(PouiViewset):
     filterset_fields    = ['nome_completo', 'email']
     search_fields       = ['nome_completo', 'email']
     ordering            = ['codigo']
+    lookup_field        = 'codigo'
 
     http_method_names   = ['get', 'post', 'put']
-    
     view_name           = 'paciente'
 
-    def get_object(self):
-      lookup_value = self.kwargs.get('pk')
-      
-      if lookup_value.isdigit():
-          return get_object_or_404(models.Paciente, id=int(lookup_value))
-      else:
-          return get_object_or_404(models.Paciente, codigo=lookup_value)
-          
+
 class PacienteListViewSet(PouiViewset):
     queryset            = models.Paciente.objects.all()
     serializer_class    = serializers.PacienteListSerialize
@@ -35,7 +28,8 @@ class PacienteListViewSet(PouiViewset):
     filterset_fields    = ['nome_completo', 'email']
     search_fields       = ['nome_completo', 'email']
     ordering            = ['email']
-
+    lookup_field        = 'codigo'
+    
     http_method_names   = ['get']
     
     view_name           = 'pacientes'

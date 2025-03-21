@@ -44,6 +44,7 @@ class Paciente(models.Model):
     plano_cuidados_medicos = models.TextField(blank=True, null=True)
     tratamentos_especificos = models.TextField(blank=True, null=True)
     acompanhamento_medico = models.TextField(blank=True, null=True)
+    outras_dependencias = models.TextField(blank=True, null=True)
     medico_responsavel = models.CharField(max_length=255, blank=True, null=True)
     convenio_medico = models.CharField(max_length=255, blank=True, null=True)
     condicao_saude_atual = models.TextField(blank=True, null=True)
@@ -92,3 +93,20 @@ class Paciente(models.Model):
         
         super(Paciente, self).save(*args,**kwargs)
 
+
+
+
+class Anamnese(models.Model):
+    paciente            = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    data_registro       = models.DateTimeField(auto_now_add=True)
+    queixa_principal    = models.TextField(blank=True, null=True)
+    historico_doencas   = models.TextField(blank=True, null=True)
+    uso_medicamentos    = models.TextField(blank=True, null=True)
+    sintomas_atuais     = models.TextField(blank=True, null=True)
+    observacoes         = models.TextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = "Anamneses"
+
+    def __str__(self):
+        return f'{self.paciente.codigo} {self.data_registro}'
