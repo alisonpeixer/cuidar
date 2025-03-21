@@ -11,13 +11,21 @@ import { PoMenuItem } from '@po-ui/ng-components';
 export class MainComponent implements OnInit {
 
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home' },
     { label: 'Pacientes',
       icon: 'an-user',
       subItems: [
         { label: 'Cadastrar', link: '/paciente/cadastro' },
         { label: 'Listar', link: '/pacientes' },
-    ] },
+      ]
+    },
+    {
+      label: 'Anamnese',
+      icon: 'an-notes-medical',
+      subItems: [
+        { label: 'Registrar', link: '/anamnese/cadastro' },
+        { label: 'Listar', link: '/anamneses' },
+      ]
+    }
   ];
 
   constructor() { }

@@ -10,8 +10,7 @@ import { NgForm } from '@angular/forms';
     selector: 'app-paciente-crud',
     templateUrl: './paciente-crud.component.html',
     styleUrls: ['./paciente-crud.component.css'],
-    encapsulation: ViewEncapsulation.None,
-    standalone: false
+    encapsulation: ViewEncapsulation.None
 })
 export class PacienteCrudComponent implements OnInit {
 

@@ -45,6 +45,7 @@ export interface Paciente {
   diagnostico_psicologico: string;
   comportamento_emocional: string;
   preferencias_habitos: string;
+  outras_dependencias: string;
   data_admissao: Date | undefined;
   data_alta: Date | undefined;
   pagamento: number | null; // ou poderia ser string dependendo da necessidade
@@ -100,6 +101,7 @@ export const getDefaultPaciente = ():Paciente => ({
   diagnostico_psicologico: '',
   comportamento_emocional: '',
   preferencias_habitos: '',
+  outras_dependencias: '',
   data_admissao: new Date(),
   data_alta: undefined,
   pagamento: 0,

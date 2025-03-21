@@ -7,8 +7,7 @@ import { PacienteService } from '../service/paciente.service';
 @Component({
     selector: 'app-paciente-lista',
     templateUrl: './paciente-lista.component.html',
-    styleUrls: ['./paciente-lista.component.css'],
-    standalone: false
+    styleUrls: ['./paciente-lista.component.css']
 })
 export class PacienteListaComponent implements OnInit {
 

@@ -1,0 +1,39 @@
+<po-page-edit p-title="Anamnese do Paciente" (p-save)="salvar()" >
+  <form #anamneseForm="ngForm">
+    <div class="po-md-12">
+      <po-widget p-label="Data da Anamnese" class="po-md-12">
+        <div class="po-row po-md-12">
+          <po-lookup p-label="Paciente" class="po-md-12 po-lg-6"  [(ngModel)]="dadosAnamnese.paciente"  [p-filter-service]="pacienteLookupService.filterService" [p-field-format]="pacienteLookupService.fieldFormat" name="paciente"></po-lookup>
+          <po-datepicker class="po-md-12 po-lg-6" p-label="Data" [(ngModel)]="dadosAnamnese.data_registro"   name="dataConsulta"></po-datepicker>
+        </div>
+      </po-widget>
+
+      <po-divider class="po-md-12"></po-divider>
+
+      <po-widget p-label="Queixa Principal">
+        <div class="po-row po-md-12">
+          <po-textarea class="po-md-12" p-label="Qual é a queixa principal?" [(ngModel)]="dadosAnamnese.queixa_principal" name="queixa_principal"></po-textarea>
+        </div>
+      </po-widget>
+
+      <po-widget p-label="Histórico Médico">
+        <div class="po-row po-md-12">
+          <po-textarea class="po-md-12" p-label="Histórico de Doenças" [(ngModel)]="dadosAnamnese.historico_doencas" name="historico_doencas"></po-textarea>
+          <po-textarea class="po-md-12" p-label="Uso de Medicamentos" [(ngModel)]="dadosAnamnese.uso_medicamentos"  name="uso_medicamentos"></po-textarea>
+        </div>
+      </po-widget>
+
+      <po-widget p-label="Sintomas Atuais">
+        <div class="po-row po-md-12">
+          <po-textarea class="po-md-12" p-label="Quais são os sintomas atuais?"  [(ngModel)]="dadosAnamnese.sintomas_atuais" name="sintomas_atuais"></po-textarea>
+        </div>
+      </po-widget>
+
+      <po-widget p-label="Outras Informações">
+        <div class="po-row po-md-12">
+          <po-textarea class="po-md-12" p-label="Outras Observações" [(ngModel)]="dadosAnamnese.observacoes" name="observacoes"></po-textarea>
+        </div>
+      </po-widget>
+    </div>
+  </form>
+</po-page-edit>

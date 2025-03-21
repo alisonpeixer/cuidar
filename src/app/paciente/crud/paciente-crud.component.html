@@ -132,12 +132,16 @@
               [(ngModel)]="dadosPaciente.ajuda_locomocao" name="ajuda_locomocao"></po-checkbox>
             <po-checkbox class="po-md-12 po-lg-6 po-mt-2" p-label="Uso de Fraldas ou Cuidadores Especiais"
             [(ngModel)]="dadosPaciente.fraldas_cuidadores" name="fraldas_cuidadores"></po-checkbox>
-
-
+          </div>
+          <po-divider class="po-md-12"></po-divider>
+          <div class="po-md-12">
             <po-rich-text
               class="po-md-12"
               p-label=" Outros"
-              ></po-rich-text>
+              [(ngModel)]="dadosPaciente.outras_dependencias"
+              name="outras_dependencias"
+              [p-height]="500"
+            ></po-rich-text>
           </div>
           <po-divider class="po-md-12"></po-divider>
           <div class="po-row po-md-12 po-mt-2 po-mb-2">
@@ -147,10 +151,11 @@
         </div>
       </po-tab>
       <po-tab p-label="Histórico Familiar">
-        <po-widget class="po-md-12">
-          <po-rich-text class="po-md-12 po-lg-12" [p-height]="300" [(ngModel)]="dadosPaciente.historico_familiar"
-            name="historico_familiar"></po-rich-text>
-        </po-widget>
+        <po-rich-text
+            class="po-md-12"
+
+            [(ngModel)]="dadosPaciente.historico_familiar"
+            name="historico_familiar" ></po-rich-text>
       </po-tab>
       <po-tab p-label="Psicológicas e Comportamentais">
         <div class="po-row po-md-12 po-mt-2">
